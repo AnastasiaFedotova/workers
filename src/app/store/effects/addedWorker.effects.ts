@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { throwError } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { WorkerService } from 'src/app/services/worker.service';
 import { EAddedWorkerActions, AddWorker } from '../actions/addedWorker.actions';
+import { GetWorkers } from './../actions/workerList.actions';
 
 @Injectable({ providedIn: "root" })
 export class AddedWorkerEffect {
@@ -11,10 +12,13 @@ export class AddedWorkerEffect {
 
   addWorker$ = createEffect(() => this.actions$.pipe(
     ofType<AddWorker>(EAddedWorkerActions.AddWorker),
-    mergeMap((_action) => this.workersService.addWorker()
+    switchMap((_action) => this.workersService.addWorker()
       .pipe(
         map(worker => ({ type: EAddedWorkerActions.AddWorkerSuccess, payload: worker }))
       )),
+    switchMap(_res => [
+      new GetWorkers()
+    ]),
     catchError(err => {
       return throwError(err);
     })
