@@ -1,5 +1,5 @@
 <div>
-  <app-worker *ngFor="let worker of workers" worker="worker"></app-worker>
+  <app-worker *ngFor="let worker of workers" [worker]="worker"></app-worker>
   <button (click)="addWorker()" type="button">
     create
   </button>

@@ -3,6 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/state/app.state';
 import { WorkerInterface } from './../../interface/worker';
 import { AddWorker } from './../../store/actions/addedWorker.actions'
+import { GetWorkers } from './../../store/actions/workerList.actions'
 import { selectedWorkersList } from './../../store/selectors/workersList.selectors';
 
 @Component({
@@ -13,11 +14,11 @@ import { selectedWorkersList } from './../../store/selectors/workersList.selecto
 export class WorkersContainerComponent implements OnInit {
   workers: WorkerInterface[] = [];
   constructor(private store: Store<AppState>) {
+    this.store.dispatch(new GetWorkers());
   }
 
   ngOnInit(): void {
     this.store.pipe(select(selectedWorkersList)).subscribe(val => {
-      debugger
       this.workers = val;
     })
   }
