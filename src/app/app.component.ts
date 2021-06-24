@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import io from 'socket.io-client';
+import { SocketService } from './services/socket.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  constructor() {
-    const socket = io(environment.url);
+export class AppComponent implements OnInit {
+  constructor(private socketService: SocketService) {
+  }
 
-    socket.on("message", data => {
-      console.log(data);
+  ngOnInit() {
+    this.socketService.onMessage().subscribe(msg => {
+      console.log(msg);
     });
   }
 }
