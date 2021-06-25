@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { SocketService } from 'src/app/services/socket.service';
+import { selectedAddedWorker } from 'src/app/store/selectors/addedWorker.selectors';
 import { AppState } from 'src/app/store/state/app.state';
 import { WorkerInterface } from './../../interface/worker';
 import { AddWorker } from './../../store/actions/addedWorker.actions'
@@ -33,5 +34,9 @@ export class WorkersContainerComponent implements OnInit {
 
   addWorker() {
     this.store.dispatch(new AddWorker());
+  }
+
+  trackItem (_index: number, item: WorkerInterface) {
+    return item.id;
   }
 }
