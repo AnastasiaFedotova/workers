@@ -1,15 +1,21 @@
-<div *ngIf="!killed">
-  <h1>
-    Worker ID: {{worker?.id}}
-  </h1>
+<div class="worker" *ngIf="!killed">
+  <div class="worker__titile">
+    <h1 class="worker__title-text">
+      Worker ID: {{worker?.id}}
+    </h1>
+  </div>
 
-  <ul>
-    <li *ngFor="let log of logs">{{log}}</li>
-  </ul>
+  <div class="worker__box-log">
+    <ul class="worker__list-log">
+      <li *ngFor="let log of logs" class="worker__log">{{log}}</li>
+    </ul>
+  </div>
 
-  <button type="button" (click)="killWorker()">
-    kill
-  </button>
+  <div class="worker__item">
+    <button class="worker__btn" type="button" (click)="killWorker()">
+      Kill
+    </button>
 
-  <app-timer></app-timer>
+    <app-timer class="worker__timer"></app-timer>
+  </div>
 </div>

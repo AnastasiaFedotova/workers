@@ -1,0 +1,24 @@
+.workers-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  padding: 42px 102px;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  background: #F5F6FA;;
+  .workers-box__btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 128px;
+    height: 64px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #fff;
+    background-color: #628BF7;
+    border: none;
+    cursor: pointer;
+  }
+}

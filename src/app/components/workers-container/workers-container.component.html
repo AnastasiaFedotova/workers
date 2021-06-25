@@ -1,6 +1,6 @@
-<div>
-  <app-worker *ngFor="let worker of workers; let i = index; trackBy: trackItem" [worker]="worker"></app-worker>
-  <button (click)="addWorker()" type="button">
-    create
+<div class="workers-box">
+  <app-worker *ngFor="let worker of workers; let i = index; trackBy: trackItem" class="workers-box__item" [worker]="worker"></app-worker>
+  <button class="workers-box__btn" (click)="addWorker()" type="button">
+    Create Worker
   </button>
 </div>
