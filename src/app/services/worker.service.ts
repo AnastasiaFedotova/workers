@@ -21,7 +21,7 @@ export class WorkerService {
     });
   }
 
-  removeWorker(id: number) {
+  removeWorker(id: string) {
     return this.http.put(`${this.urlApiWorkers}/${id}`, {}, {
       withCredentials: true
     });

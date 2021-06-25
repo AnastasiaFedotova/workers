@@ -11,6 +11,7 @@ import { WorkerComponent } from './components/worker/worker.component';
 import { AppReducer } from './store/redurcers/app.reducers';
 import { WorkersListEffect } from './store/effects/workersList.effects';
 import { AddedWorkerEffect } from './store/effects/addedWorker.effects';
+import { RemovedWorkerEffect } from './store/effects/removedWorker.effects';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { AddedWorkerEffect } from './store/effects/addedWorker.effects';
     StoreModule.forRoot(AppReducer),
     HttpClientModule,
     StoreModule.forRoot(AppReducer),
-    EffectsModule.forRoot([WorkersListEffect, AddedWorkerEffect])
+    EffectsModule.forRoot([WorkersListEffect, AddedWorkerEffect, RemovedWorkerEffect])
   ],
   providers: [Store],
   bootstrap: [AppComponent]

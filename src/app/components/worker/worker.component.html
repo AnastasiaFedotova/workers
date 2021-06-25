@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!killed">
   <h1>
     Worker ID: {{worker?.id}}
   </h1>
@@ -7,7 +7,7 @@
     <li *ngFor="let log of logs">{{log}}</li>
   </ul>
 
-  <button type="button" (clisk)="killWorker()">
+  <button type="button" (click)="killWorker()">
     kill
   </button>
 </div>

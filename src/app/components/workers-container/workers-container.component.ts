@@ -24,7 +24,6 @@ export class WorkersContainerComponent implements OnInit {
     });
 
     this.socketService.killWorker().subscribe((id: string) => {
-      debugger
       const index = this.workers.findIndex(e => e.id === id);
       const arr = [...this.workers];
       arr.splice(index, 1);
