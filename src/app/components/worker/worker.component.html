@@ -1,1 +1,13 @@
-<div>{{worker?.id}}</div>
+<div>
+  <h1>
+    Worker ID: {{worker?.id}}
+  </h1>
+
+  <ul>
+    <li *ngFor="let log of logs">{{log}}</li>
+  </ul>
+
+  <button type="button" (clisk)="killWorker()">
+    kill
+  </button>
+</div>

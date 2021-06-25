@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { SocketService } from 'src/app/services/socket.service';
 import { AppState } from 'src/app/store/state/app.state';
 import { WorkerInterface } from './../../interface/worker';
 import { AddWorker } from './../../store/actions/addedWorker.actions'
@@ -13,14 +14,22 @@ import { selectedWorkersList } from './../../store/selectors/workersList.selecto
 })
 export class WorkersContainerComponent implements OnInit {
   workers: WorkerInterface[] = [];
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private socketService: SocketService) {
     this.store.dispatch(new GetWorkers());
   }
 
   ngOnInit(): void {
     this.store.pipe(select(selectedWorkersList)).subscribe(val => {
       this.workers = val;
-    })
+    });
+
+    this.socketService.killWorker().subscribe((id: string) => {
+      debugger
+      const index = this.workers.findIndex(e => e.id === id);
+      const arr = [...this.workers];
+      arr.splice(index, 1);
+      this.workers = arr;
+    });
   }
 
   addWorker() {
