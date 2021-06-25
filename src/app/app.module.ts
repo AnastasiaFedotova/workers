@@ -12,12 +12,14 @@ import { AppReducer } from './store/redurcers/app.reducers';
 import { WorkersListEffect } from './store/effects/workersList.effects';
 import { AddedWorkerEffect } from './store/effects/addedWorker.effects';
 import { RemovedWorkerEffect } from './store/effects/removedWorker.effects';
+import { TimerComponent } from './components/timer/timer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WorkersContainerComponent,
-    WorkerComponent
+    WorkerComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
