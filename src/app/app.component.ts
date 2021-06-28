@@ -7,12 +7,9 @@ import { SocketService } from './services/socket.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private socketService: SocketService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.socketService.onMessage().subscribe(msg => {
-      console.log(msg);
-    });
   }
 }
